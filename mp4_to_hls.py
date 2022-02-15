@@ -9,7 +9,6 @@ from tkinter import messagebox
 # converts a file
 def convert_file(filename):
     if filename != None and filename != "":
-        print ("FILE: " + filename)
         if (filename.endswith(".mp4")):
             ffmpeg.input(filename).output(filename[:-4] + '.m3u8', format='hls', start_number=0, hls_time=10, hls_list_size=0).run()
 
@@ -33,13 +32,11 @@ def browse_files():
         title = "Select a File",
         filetypes = (("mp4","*.mp4*"),("all files","*.*"))
     )    
-    print (filename)
     convert_file(filename)     
             
 # directory explorer window
 def browse_dirs():
     directory = filedialog.askdirectory()
-    print(directory)
     convert_dir(directory)
 		
 # exits the program
